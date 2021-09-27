@@ -7,7 +7,30 @@ This scaffolding template separates web client from the blockchain development. 
 
 When you compile and deploy your Hardhat contracts, the compiled ABI is stored in the shared root `lib` project, which using `npm` or `yarn` package `link`s you can import into your web client as needed. This allows you, should you choose to accept your adventure, compile and deploy hardhat contract, then deploy result contract library to an internal NPM registry and pull it down in your web client.
 
-## Setup
+## Create private keys
+Before you can actually use your application you need to setup some Ethereum accounts. The `blockchain` project is setup to read from a local file `hardhatAccounts.json` containing preset private keys and balances.
+
+```javascript
+{
+	 "accounts": [
+			{
+				 "address": "addressHere", 
+				 "privateKey": "privateKey",
+				 "balance": "10000000000000000000000"
+			}
+	 ]
+}
+```
+
+You can do this via Metamask. 
+
+> **NOTE** Make sure you setup MetaMask to use the Hardhat network (custom RPC via 31337) before hand.
+
+MetaMask > Create Account > Copy private + Address
+
+Add Private Key and Address information to `hardhatAccounts.json`. Hardhat will read from this file and initialize the local development environment using this information. In other words, the "owner" of a deployed contract will be one of these accounts.
+
+## Setup 
 You will need to `cd` into the directories and grab node modules:
 ```bash
 cd blockchain
